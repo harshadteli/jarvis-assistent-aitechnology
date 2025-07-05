@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INERTIA - Virtual Assistant</title>
+
+    <!---- CSS Linkage ------>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+
+    <!---- Font Awesome Cdn Linkage ------>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!------- Favicon Linkage --------->
+    <link rel="shortcut icon" href="arc1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/IMAGES/Iron.jpg" type="image/x-icon">
+    <style>
+              .main-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #222;
+    }
+
+    p {
+      font-size: 18px;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="main">
+         <div id="statusPopup" class="typing-effect"></div>
+        <!----- Preloader Start ------>
+        <div class="preloader">
+            <div class="loader">
+                <img src="./assets/IMAGES/load.gif" alt="load">
+            </div>
+        </div>
+        <!----- Preloader End ------>
+
+        <div class="img-container">
+            <div class="image">
+                <img src="./assets/IMAGES/gif.gif" alt="gif">
+            </div>
+            <h1>J A R V I S</h1>
+            <p>I'm a Virtual Assistant how can I help you</p>
+        </div>
+        <div class="input">
+            <button class="talk" id="talk"><i class="fas fa-microphone-alt"></i></button>
+            <h1 class="content" id="content">> Click here to speak</h1>
+        </div>
+
+        <div class="date">
+            <p id="CurDate"></p>
+            <img src="./assets/IMAGES/text.gif" alt="text">
+        </div>
+
+        <div class="time">
+            <p id="CurTime"></p>
+            <img src="./assets/IMAGES/text.gif" alt="text">
+        </div>
+
+        <!-- <div class="textBox">
+            <img src="box.jpg" alt="">
+        </div> -->
+
+        <div class="fill">
+            <img src="./assets/IMAGES/im.gif" alt="">
+        </div>
+
+        <div class="fill2">
+            <img src="./assets/IMAGES/im2.gif" alt="">
+        </div>
+
+        <!---- Audio Section ------>
+        <audio id="audio">
+            <source src="./assets/AUDIOS/audio1.mp3" type="audio/mp3">
+        </audio><br><br><br>
+        <center><font color="white"><small>&copy; 2025 HarshTech Organization | All rights reserved</small></font></center>
+        <!---- Audio Section End ------>
+    </section>
+    
+
+    <script src="./assets/JS/app.js"></script>
+    <script>
+        // Inject styles ONLY for the popup
+  const popupStyle = document.createElement("style");
+  popupStyle.textContent = `
+    #statusPopup {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #000;
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      padding: 12px 18px;
+      z-index: 9999;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      width: auto;
+      max-width: 90%;
+      display: none;
+      box-shadow: 0 0 10px #00ff00;
+      white-space: nowrap;
+    }
+
+    #statusPopup.offline {
+      border-color: red;
+      color: red;
+      box-shadow: 0 0 10px red;
+    }
+
+    .typing-effect::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  `;
+  document.head.appendChild(popupStyle);
+
+  // Reference to the popup
+  const statusPopup = document.getElementById('statusPopup');
+
+  // Function to display popup with typing effect
+  function showTypingPopup(message, isOffline = false, redirectAfter = false) {
+    statusPopup.classList.remove('offline');
+    if (isOffline) statusPopup.classList.add('offline');
+
+    statusPopup.style.display = 'block';
+    statusPopup.innerHTML = '';
+    let i = 0;
+
+    const typeInterval = setInterval(() => {
+      if (i < message.length) {
+        statusPopup.innerHTML += message.charAt(i);
+        i++;
+      } else {
+        clearInterval(typeInterval);
+
+        setTimeout(() => {
+          statusPopup.style.display = 'none';
+
+          if (redirectAfter && isOffline) {
+            showTypingPopup("Redirecting to safe mode...", true);
+            setTimeout(() => {
+              alert("You are offline. Please check your connection.");
+              // location.href = 'offline.html'; // Optional: real redirect
+            }, 2000);
+          }
+        }, 2000); // Hide popup after 2 seconds
+      }
+    }, 80);
+  }
+
+  // Check status on load
+  function handleOnlineStatus() {
+    if (navigator.onLine) {
+      showTypingPopup(">> SYSTEM IS ONLINE <<");
+    } else {
+      showTypingPopup(">> SYSTEM IS OFFLINE <<", true, true);
+    }
+  }
+
+  // Event listeners
+  window.addEventListener('load', handleOnlineStatus);
+  window.addEventListener('online', () => showTypingPopup(">> SYSTEM IS BACK ONLINE <<"));
+  window.addEventListener('offline', () => showTypingPopup(">> SYSTEM IS OFFLINE <<", true, true));
+    </script>
+    <script src="./assets/JS/prevent.js"></script>
+    
+</body>
+
+</html>
