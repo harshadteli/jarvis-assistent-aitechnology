@@ -1,0 +1,126 @@
+  * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: #000;
+            color: #00fff7;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #0ff;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #0ff;
+            margin-top: 30px;
+            text-shadow: 0 0 5px #0ff;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #0ff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        p,
+        li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 25px;
+        }
+
+        .quote {
+            margin-top: 40px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #0ff;
+        }
+
+        .enter-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: transparent;
+            color: #00fff7;
+            border: 2px solid #00fff7;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 1.5s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            background: #00fff7;
+            color: #000;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 247, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 255, 247, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 247, 0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            p,
+            li {
+                font-size: 1rem;
+            }
+
+            .enter-btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
