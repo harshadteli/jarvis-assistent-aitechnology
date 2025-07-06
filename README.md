@@ -122,6 +122,13 @@ Safari ❌ Limited
 
 ---
 
+## 📬feedback Form 
+
+
+[![Form](https://img.shields.io/badge/Feedback_Form-4285F4?style=for-the-badge&logo=googleforms&logoColor=white)](https://harshadteli.github.io/Feedback-Form-HarshTech/)
+
+---
+
 📧 Author
 
 - Harshad Teli<br>
