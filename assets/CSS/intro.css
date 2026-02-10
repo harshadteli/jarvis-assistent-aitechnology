@@ -1,126 +1,126 @@
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400;700&display=swap');
+
+  :root {
+      --accent: #00f2ff;
+      --bg-color: #050b10;
+      --glass-bg: rgba(15, 25, 35, 0.7);
+      --glass-border: rgba(0, 255, 255, 0.2);
+      --text-main: #e0faff;
+  }
+
   * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Courier New', monospace;
-        }
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto Mono', monospace;
+  }
 
-        body {
-            background-color: #000;
-            color: #00fff7;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-bottom: 100px;
-        }
+  body {
+      background-color: var(--bg-color);
+      background-image:
+          radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.15), transparent 70%);
+      color: var(--text-main);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+  }
 
-        h1,
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+  .container {
+      max-width: 800px;
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      margin-bottom: 100px;
+  }
 
-        h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px #0ff;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+  h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+      font-size: 2.2rem;
+      text-align: center;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 0 0 15px var(--accent);
+  }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #0ff;
-            margin-top: 30px;
-            text-shadow: 0 0 5px #0ff;
-        }
+  h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin: 25px 0 15px 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+  }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #0ff;
-            }
+  p,
+  li {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #b0c9d0;
+      margin-bottom: 12px;
+  }
 
-            to {
-                text-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
-            }
-        }
+  ul {
+      padding-left: 20px;
+      list-style: none;
+  }
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-        }
+  ul li::before {
+      content: ">> ";
+      color: var(--accent);
+      font-weight: bold;
+  }
 
-        p,
-        li {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
+  .quote {
+      margin-top: 40px;
+      text-align: center;
+      font-style: italic;
+      color: var(--accent);
+      opacity: 0.8;
+  }
 
-        ul {
-            padding-left: 25px;
-        }
+  .enter-btn {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--bg-color);
+      border: none;
+      padding: 15px 40px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 25px var(--accent);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1000;
+  }
 
-        .quote {
-            margin-top: 40px;
-            text-align: center;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #0ff;
-        }
+  .enter-btn:hover {
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 0 40px var(--accent);
+  }
 
-        .enter-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: transparent;
-            color: #00fff7;
-            border: 2px solid #00fff7;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 1000;
-            animation: pulse 1.5s infinite;
-            transition: all 0.3s ease;
-        }
+  @media (max-width: 600px) {
+      .container {
+          padding: 20px;
+      }
 
-        .enter-btn:hover {
-            background: #00fff7;
-            color: #000;
-        }
+      h1 {
+          font-size: 1.6rem;
+      }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 255, 247, 0.5);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(0, 255, 247, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 255, 247, 0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            p,
-            li {
-                font-size: 1rem;
-            }
-
-            .enter-btn {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-        }
+      h2 {
+          font-size: 1rem;
+      }
+  }
